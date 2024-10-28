@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <title>TypeScript via CDN</title>
+ <script src="https://unpkg.com/typescript@5.6.3/lib/typescript.js"></script>
+</head>
+
+<body>
+ <h1>TypeScript via CDN</h1>
+ <p>Check the console for the transpiled output.</p>
+ <script>
+
+ // entrada para typescript 
+ const input = `let x: string = "Hello, world!";`;
+ const output = ts.transpileModule(input, { compilerOptions: { module: ts.ModuleKind.CommonJS } });
+ console.log(output.outputText);
+
+
+
+ // typescript para javascript, resultado ao navegador
+ const textElement = document.createTextNode(output.outputText);
+ document.body.appendChild(textElement);
+
+ console.log('-------------------');
+ console.log(output.outputText);
+
+
+ eval(output.outputText);
+
+ console.log(x);
+ 
+ const textElement1 = document.createTextNode(x);
+ document.body.appendChild(textElement1);
+
+
+
+ </script>
+</body>
+
+</html>
